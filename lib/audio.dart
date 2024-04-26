@@ -4,15 +4,15 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: SimpleExampleApp()));
+  runApp(MaterialApp(home: ReproduzirAudio()));
 }
 
-class SimpleExampleApp extends StatefulWidget {
+class ReproduzirAudio extends StatefulWidget {
   @override
-  _SimpleExampleAppState createState() => _SimpleExampleAppState();
+  _ReproduzirAudioState createState() => _ReproduzirAudioState();
 }
 
-class _SimpleExampleAppState extends State<SimpleExampleApp> {
+class _ReproduzirAudioState extends State<ReproduzirAudio> {
   late AudioPlayer player;
 
   @override

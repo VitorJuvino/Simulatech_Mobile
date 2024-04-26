@@ -68,6 +68,10 @@ flutter:
   assets:
     - assets/logo.jpeg
     - assets/audio1.mpeg
+    - assets/pulmao.png
+    - assets/coracao.png
+    - assets/cuidados-de-saude.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

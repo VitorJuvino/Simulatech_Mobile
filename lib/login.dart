@@ -9,9 +9,6 @@ class LoginApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Login ',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: LoginPage(),
     );
   }
@@ -81,9 +78,8 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Aqui você pode adicionar a lógica para autenticação
-                  // comparando os dados inseridos pelo usuário.
-                  // Por exemplo, você pode usar Firebase Authentication.
+                  // adicionar a lógica para autenticação
+                  // Usar Firebase Authentication.
                   print('Email: ${_emailController.text}');
                   print('Password: ${_passwordController.text}');
                 },

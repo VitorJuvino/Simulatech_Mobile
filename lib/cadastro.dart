@@ -9,9 +9,6 @@ class RegisterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cadastro',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: RegisterPage(),
     );
   }
