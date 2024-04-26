@@ -4,15 +4,15 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: ReproduzirAudio()));
+  runApp(MaterialApp(home: ausculta_simultanea()));
 }
 
-class ReproduzirAudio extends StatefulWidget {
+class ausculta_simultanea extends StatefulWidget {
   @override
-  _ReproduzirAudioState createState() => _ReproduzirAudioState();
+  _ausculta_simultaneaState createState() => _ausculta_simultaneaState();
 }
 
-class _ReproduzirAudioState extends State<ReproduzirAudio> {
+class _ausculta_simultaneaState extends State<ausculta_simultanea> {
   late AudioPlayer player;
 
   @override
@@ -39,11 +39,14 @@ class _ReproduzirAudioState extends State<ReproduzirAudio> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(23, 118, 88, 1),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(23, 118, 88, 1),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Ausculta Pulmonar',
+            'Ausculta Simultânea',
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
           SizedBox(height: 20),
