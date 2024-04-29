@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       backgroundColor: Color.fromRGBO(23, 118, 88, 1),
       body: Column(
         children: [
-          SizedBox(height: 90),
+          SizedBox(height: 60),
           Image.asset(
             'assets/logo.jpeg',
             width: 280,
