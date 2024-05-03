@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "195365557475",
+    "project_id": "simulatechmobile",
+    "storage_bucket": "simulatechmobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195365557475:android:1e7079128eaf910a58e1d6",
+        "android_client_info": {
+          "package_name": "com.example.simulatech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx_-ylyUTI0yHAKXQ1oAMKj0hLQab98Wc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

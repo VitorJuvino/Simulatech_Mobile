@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:simulatech/cadastro.dart';
+import 'package:simulatech/pagina_inicial.dart';
 
 void main() {
   runApp(LoginApp());
@@ -8,7 +11,7 @@ class LoginApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login ',
+      title: 'Login',
       home: LoginPage(),
     );
   }
@@ -22,6 +25,30 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<void> _login() async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Paginainicial()),
+      );
+    } catch (e) {
+      print('Erro ao fazer login: $e');
+      // Exibe uma mensagem de erro ao usuário
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Email ou senha incorretos. Por favor, tente novamente.'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 180,
                 height: 180,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 40),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.transparent,
@@ -51,12 +78,12 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: 'Email',
                     hintStyle: TextStyle(color: Colors.white),
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   ),
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.transparent,
@@ -69,27 +96,43 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: 'Senha',
                     hintStyle: TextStyle(color: Colors.white),
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   ),
                   obscureText: true,
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // adicionar a lógica para autenticação
-                  // Usar Firebase Authentication.
-                  print('Email: ${_emailController.text}');
-                  print('Password: ${_passwordController.text}');
-                },
-                child: Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(32, 101, 79, 1),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: _login, // Chama a função de login
+                    child: Text(
+                      'Login',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(32, 101, 79, 1),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CadastroPage()),
+                      );
+                    },
+                    child: Text(
+                      'Cadastro',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(32, 101, 79, 1),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

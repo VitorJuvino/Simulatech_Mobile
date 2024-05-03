@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:simulatech/login.dart';
+import 'package:simulatech/service/autenticacao.dart';
 
 void main() {
-  runApp(RegisterApp());
+  runApp(CadastroPage());
 }
 
-class RegisterApp extends StatelessWidget {
+class CadastroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,6 +30,17 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _areaController = TextEditingController();
   String _type = 'Profissional';
 
+  Autenticacao _autenticacao = Autenticacao();
+
+  void _exibirMensagem(String mensagem) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(mensagem),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +56,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.only(bottom: 20.0),
                   child: Image.asset(
                     'assets/logo.jpeg',
-                    width: 180,
-                    height: 180,
+                    width: 160,
+                    height: 150,
                   ),
                 ),
                 Column(
@@ -268,27 +281,70 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // Adicione aqui a lógica para realizar o cadastro,
-                    // verificando a validade dos campos e inserindo os dados no banco de dados.
-                    print('Email: ${_emailController.text}');
-                    print('Nome: ${_firstNameController.text}');
-                    print('Sobrenome: ${_lastNameController.text}');
-                    print('Senha: ${_passwordController.text}');
-                    print('Confirmar Senha: ${_confirmPasswordController.text}');
-                    print('Área de Atuação: ${_areaController.text}');
-                    print('$_type');
-                  },
-                  child: Text(
-                    'Cadastrar',
-                    style: TextStyle(color: Colors.white),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                  ElevatedButton(
+                    onPressed: () async {
+                      String email = _emailController.text;
+                      String firstName = _firstNameController.text;
+                      String lastName = _lastNameController.text;
+                      String password = _passwordController.text;
+                      String confirmPassword = _confirmPasswordController.text;
+                      String area = _areaController.text;
+
+                      // Lógica para realizar o cadastro
+                      bool sucesso = await _autenticacao.cadastrarUsuario(
+                        email: email,
+                        firstName: firstName,
+                        lastName: lastName,
+                        password: password,
+                        confirmPassword: confirmPassword,
+                        area: area,
+                      );
+
+                      // Exibir mensagem de sucesso apenas se o cadastro for bem-sucedido
+                      if (sucesso) {
+                        _exibirMensagem('Cadastro realizado com sucesso!');
+                      } else {
+                        // Caso contrário, exiba uma mensagem de erro
+                        _exibirMensagem('Erro ao realizar o cadastro. Por favor, tente novamente.');
+                      }
+
+                      // verificando a validade dos campos e inserindo os dados no banco de dados.
+                      print('Email: ${_emailController.text}');
+                      print('Nome: ${_firstNameController.text}');
+                      print('Sobrenome: ${_lastNameController.text}');
+                      print('Senha: ${_passwordController.text}');
+                      print('Confirmar Senha: ${_confirmPasswordController.text}');
+                      print('Área de Atuação: ${_areaController.text}');
+                      print('$_type');
+                    },
+                    child: Text(
+                      'Cadastrar',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(32, 101, 79, 1),
+                    ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(32, 101, 79, 1),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push( context,
+                        MaterialPageRoute(builder: (context) => LoginApp()),
+                         );
+                         },
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromRGBO(32, 101, 79, 1),
+                    ),
                   ),
-                ),
+                ],
+               ),
               ],
             ),
           ),
