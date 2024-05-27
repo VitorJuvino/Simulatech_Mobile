@@ -16,6 +16,10 @@ class _AuscultaPulmonarState extends State<AuscultaPulmonar> {
   late AudioPlayer player1;
   late AudioPlayer player2;
   late AudioPlayer player3;
+  late AudioPlayer player4;
+  late AudioPlayer player5;
+  late AudioPlayer player6;
+  late AudioPlayer player7;
 
   @override
   void initState() {
@@ -23,19 +27,31 @@ class _AuscultaPulmonarState extends State<AuscultaPulmonar> {
     player1 = AudioPlayer();
     player2 = AudioPlayer();
     player3 = AudioPlayer();
+    player4 = AudioPlayer();
+    player5 = AudioPlayer();
+    player6 = AudioPlayer();
+    player7 = AudioPlayer();
 
     player1.setReleaseMode(ReleaseMode.stop);
     player2.setReleaseMode(ReleaseMode.stop);
     player3.setReleaseMode(ReleaseMode.stop);
+    player4.setReleaseMode(ReleaseMode.stop);
+    player5.setReleaseMode(ReleaseMode.stop);
+    player6.setReleaseMode(ReleaseMode.stop);
+    player7.setReleaseMode(ReleaseMode.stop);
 
     _initAudio();
   }
 
   // Função para inicializar a reprodução de áudio
   Future<void> _initAudio() async {
-    await player1.setSourceAsset('audio1.mpeg');
-    await player2.setSourceAsset('audio1.mpeg');
-    await player3.setSourceAsset('audio1.mpeg');
+    await player1.setSourceAsset('Crepitoforte.m4a');
+    await player2.setSourceAsset('CrepitoFraco.mp3');
+    await player3.setSourceAsset('Estridor.mp3');
+    await player4.setSourceAsset('Normalbc.mp3');
+    await player5.setSourceAsset('Pneumonia.m4a');
+    await player6.setSourceAsset('Ronco.mp3');
+    await player7.setSourceAsset('Sibilos.mp3');
   }
 
   @override
@@ -43,6 +59,10 @@ class _AuscultaPulmonarState extends State<AuscultaPulmonar> {
     player1.dispose();
     player2.dispose();
     player3.dispose();
+    player4.dispose();
+    player5.dispose();
+    player6.dispose();
+    player7.dispose();
     super.dispose();
   }
 
@@ -66,20 +86,44 @@ class _AuscultaPulmonarState extends State<AuscultaPulmonar> {
             SizedBox(height: 20),
             AudioContainer(
               player: player1,
-              description: 'Descrição do áudio 1',
+              description: 'Crepitoforte',
               information: 'Informações sobre o áudio 1',
             ),
             SizedBox(height: 20),
             AudioContainer(
               player: player2,
-              description: 'Descrição do áudio 2',
+              description: 'CrepitoFraco',
               information: 'Informações sobre o áudio 2',
             ),
             SizedBox(height: 20),
             AudioContainer(
               player: player3,
-              description: 'Descrição do áudio 3',
+              description: 'Estridor',
               information: 'Informações sobre o áudio 3',
+            ),
+            SizedBox(height: 20),
+            AudioContainer(
+              player: player3,
+              description: 'Normalbc',
+              information: 'Informações sobre o áudio 4',
+            ),
+            SizedBox(height: 20),
+            AudioContainer(
+              player: player3,
+              description: 'Pneumonia',
+              information: 'Informações sobre o áudio 5',
+            ),
+            SizedBox(height: 20),
+            AudioContainer(
+              player: player3,
+              description: 'Ronco',
+              information: 'Informações sobre o áudio 6',
+            ),
+            SizedBox(height: 20),
+            AudioContainer(
+              player: player3,
+              description: 'Sibilos',
+              information: 'Informações sobre o áudio 7',
             ),
           ],
         ),

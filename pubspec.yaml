@@ -69,12 +69,19 @@ flutter:
 
   assets:
     - assets/logo.jpeg
-    - assets/audio1.mpeg
+    - assets/AudioTeste.mpeg
     - assets/Atritopericardico.m4a
     - assets/EstenoseAortica.m4a
     - assets/Murmuriodiastolico.mp3
     - assets/MurmurioSistolico.mp3
     - assets/ProlapsoValvulaMitral.m4a
+    - assets/Crepitoforte.m4a
+    - assets/CrepitoFraco.mp3
+    - assets/Estridor.mp3
+    - assets/Normalbc.mp3
+    - assets/Pneumonia.m4a
+    - assets/Ronco.mp3
+    - assets/Sibilos.mp3
     - assets/pulmao.png
     - assets/coracao.png
     - assets/cuidados-de-saude.png

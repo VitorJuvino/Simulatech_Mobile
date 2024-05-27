@@ -33,9 +33,9 @@ class _ausculta_simultaneaState extends State<ausculta_simultanea> {
 
   // Função para inicializar a reprodução de áudio
   Future<void> _initAudio() async {
-    await player1.setSourceAsset('audio1.mpeg');
-    await player2.setSourceAsset('audio1.mpeg');
-    await player3.setSourceAsset('audio1.mpeg');
+    await player1.setSourceAsset('AudioTeste.mpeg');
+    await player2.setSourceAsset('AudioTeste.mpeg');
+    await player3.setSourceAsset('AudioTeste.mpeg');
   }
 
   @override
