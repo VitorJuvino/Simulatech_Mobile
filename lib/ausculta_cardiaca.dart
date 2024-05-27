@@ -16,6 +16,8 @@ class _AuscultaCardiacaState extends State<AuscultaCardiaca> {
   late AudioPlayer player1;
   late AudioPlayer player2;
   late AudioPlayer player3;
+  late AudioPlayer player4;
+  late AudioPlayer player5;
 
   @override
   void initState() {
@@ -23,19 +25,25 @@ class _AuscultaCardiacaState extends State<AuscultaCardiaca> {
     player1 = AudioPlayer();
     player2 = AudioPlayer();
     player3 = AudioPlayer();
+    player4 = AudioPlayer();
+    player5 = AudioPlayer();
 
     player1.setReleaseMode(ReleaseMode.stop);
     player2.setReleaseMode(ReleaseMode.stop);
     player3.setReleaseMode(ReleaseMode.stop);
+    player4.setReleaseMode(ReleaseMode.stop);
+    player5.setReleaseMode(ReleaseMode.stop);
 
     _initAudio();
   }
 
   // Função para inicializar a reprodução de áudio
   Future<void> _initAudio() async {
-    await player1.setSourceAsset('audio1.mpeg');
-    await player2.setSourceAsset('audio1.mpeg');
-    await player3.setSourceAsset('audio1.mpeg');
+    await player1.setSourceAsset('Atritopericardico.m4a');
+    await player2.setSourceAsset('EstenoseAortica.m4a');
+    await player3.setSourceAsset('Murmuriodiastolico.mp3');
+    await player4.setSourceAsset('MurmurioSistolico.mp3');
+    await player5.setSourceAsset('ProlapsoValvulaMitral.m4a');
   }
 
   @override
@@ -43,6 +51,8 @@ class _AuscultaCardiacaState extends State<AuscultaCardiaca> {
     player1.dispose();
     player2.dispose();
     player3.dispose();
+    player4.dispose();
+    player5.dispose();
     super.dispose();
   }
 
@@ -66,20 +76,32 @@ class _AuscultaCardiacaState extends State<AuscultaCardiaca> {
             SizedBox(height: 20),
             AudioContainer(
               player: player1,
-              description: 'Descrição do áudio 1',
+              description: 'Atritopericardico',
               information: 'Informações sobre o áudio 1',
             ),
             SizedBox(height: 20),
             AudioContainer(
               player: player2,
-              description: 'Descrição do áudio 2',
+              description: 'EstenoseAortica',
               information: 'Informações sobre o áudio 2',
             ),
             SizedBox(height: 20),
             AudioContainer(
               player: player3,
-              description: 'Descrição do áudio 3',
+              description: 'Murmuriodiastolico',
               information: 'Informações sobre o áudio 3',
+            ),
+            SizedBox(height: 20),
+            AudioContainer(
+              player: player4,
+              description: 'MurmurioSistolico',
+              information: 'Informações sobre o áudio 4',
+            ),
+            SizedBox(height: 20),
+            AudioContainer(
+              player: player5,
+              description: 'ProlapsoValvulaMitral',
+              information: 'Informações sobre o áudio 5',
             ),
           ],
         ),

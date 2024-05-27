@@ -70,6 +70,11 @@ flutter:
   assets:
     - assets/logo.jpeg
     - assets/audio1.mpeg
+    - assets/Atritopericardico.m4a
+    - assets/EstenoseAortica.m4a
+    - assets/Murmuriodiastolico.mp3
+    - assets/MurmurioSistolico.mp3
+    - assets/ProlapsoValvulaMitral.m4a
     - assets/pulmao.png
     - assets/coracao.png
     - assets/cuidados-de-saude.png
